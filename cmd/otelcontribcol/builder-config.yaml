@@ -291,3 +291,5 @@ providers:
 # file before passing it to OCB, to ensure that local versions are used for all
 # Contrib modules.
 replaces:
+  - github.com/multiplayer-app/opentelemetry-collector-contrib/extension/jwtauthextension v0.0.0 => ../../extension/jwtauthextension
+  - github.com/multiplayer-app/opentelemetry-collector-contrib/processor/sizeprocessor v0.0.0 => ../../processor/sizeprocessor
