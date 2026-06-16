@@ -1,5 +1,5 @@
 FROM alpine:latest@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b AS prep
-RUN apk --update add ca-certificates busybox-static
+RUN apk --update add ca-certificates busybox-static curl-static
 
 FROM scratch
 
@@ -9,6 +9,7 @@ USER ${USER_UID}:${USER_GID}
 
 COPY --from=prep /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=prep /bin/busybox.static /bin/sh
+COPY --from=prep /usr/bin/curl /usr/bin/curl
 COPY otelcontribcol /
 EXPOSE 4317 55680 55679
 ENTRYPOINT ["/otelcontribcol"]
