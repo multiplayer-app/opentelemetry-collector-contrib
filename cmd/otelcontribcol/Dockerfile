@@ -9,7 +9,7 @@ USER ${USER_UID}:${USER_GID}
 
 COPY --from=prep /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=prep /bin/busybox.static /bin/sh
-COPY --from=prep /usr/bin/curl /usr/bin/curl
+COPY --from=prep /usr/bin/curl-static /usr/bin/curl
 COPY otelcontribcol /
 EXPOSE 4317 55680 55679
 ENTRYPOINT ["/otelcontribcol"]
